@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="cs" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vilém // Portfolio & Elektrotechnika</title>
+  <meta name="description" content="Osobní technologické portfolio studenta oboru elektrotechnika na SPŠ, SOŠ a SOU Hradební.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Interaktivní plátno s elektrickými spoji / částicemi -->
+  <canvas id="circuit-canvas"></canvas>
+
+  <!-- Navigace -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-brand">
+        <span class="brand-icon">⚡</span>
+        <span class="brand-name">Vilém</span>
+        <span class="brand-pill">SPŠ Hradební</span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#hero" class="nav-link active">Úvod</a>
+        <a href="#about" class="nav-link">O mně</a>
+        <a href="#skills" class="nav-link">Dovednosti</a>
+        <a href="#projects" class="nav-link">Projekty</a>
+        <a href="#future" class="nav-link">Budoucnost</a>
+        <a href="#contact" class="nav-link mobile-only-link">Kontakt</a>
+      </nav>
+
+      <div class="nav-right">
+        <a href="#contact" class="nav-contact-pill">Napsat zprávu</a>
+
+        <!-- Přepínač režimu -->
+        <button id="theme-toggle" class="theme-btn" aria-label="Přepnout motiv" title="Přepnout tmavý/světlý motiv">
+          <span class="theme-icon sun">☀️</span>
+          <span class="theme-icon moon">🌙</span>
+        </button>
+
+        <!-- Mobilní burger -->
+        <button id="hamburger" class="hamburger" aria-label="Otevřít navigaci">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <!-- 1. ÚVODNÍ PŘEDSTAVENÍ (HERO BENTO) -->
+    <section class="section" id="hero">
+      <div class="container">
+        <div class="hero-bento">
+          
+          <!-- Hlavní představovací karta -->
+          <div class="bento-card hero-main-card">
+            <div class="card-glow-cyan"></div>
+            
+            <div class="sys-badge">
+              <span class="sys-dot"></span>
+              <span>SYSTEM: ONLINE // SPŠ HRADEBNÍ</span>
+            </div>
+
+            <h1 class="hero-headline">
+              Vilém <span class="accent-electric">_</span>
+            </h1>
+
+            <p class="hero-subtext">
+              Student oboru <strong class="text-glow">Elektrotechnika</strong> na <strong>SPŠ, SOŠ a SOU Hradební</strong> v Hradci Králové. Zaměřuji se na elektrické obvody, měření veličin, moderní technologie a programování s cílem pokračovat ve studiu na <strong>technické vysoké škole</strong>.
+            </p>
+
+            <!-- Motto box jako technický blok -->
+            <div class="engineering-motto">
+              <div class="motto-code-label">MOTTO.TXT</div>
+              <p>„Elektrotechnika propojuje teorii s praxí – baví mě dávat věcem energii a logiku.“</p>
+            </div>
+
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-glow">
+                <span>Prohlédnout projekty</span>
+                <span class="btn-arrow">→</span>
+              </a>
+              <a href="#contact" class="btn btn-ghost">
+                <span>Kontaktovat</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Rychlá telemetrie / Fakta o mně -->
+          <div class="bento-card hero-telemetry-card">
+            <div class="telemetry-header">
+              <span class="telemetry-title">TELEMETRIE STUDIA</span>
+              <span class="telemetry-badge">2026</span>
+            </div>
+
+            <div class="telemetry-list">
+              <div class="telemetry-item">
+                <span class="telemetry-label">Škola:</span>
+                <span class="telemetry-val">SPŠ, SOŠ a SOU Hradební</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="telemetry-label">Obor:</span>
+                <span class="telemetry-val highlight-val">Elektrotechnika</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="telemetry-label">Lokalita:</span>
+                <span class="telemetry-val">Hradec Králové</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="telemetry-label">Cíl:</span>
+                <span class="telemetry-val highlight-val">Technická VŠ (Ing.)</span>
+              </div>
+            </div>
+
+            <!-- Mini osciloskop / animovaná sinusovka -->
+            <div class="oscilloscope-box">
+              <div class="scope-grid"></div>
+              <svg class="sine-wave" viewBox="0 0 300 60" preserveAspectRatio="none">
+                <path d="M 0,30 Q 37.5,0 75,30 T 150,30 T 225,30 T 300,30"></path>
+              </svg>
+              <span class="scope-label">SIGNAL: STABLE 50Hz</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. O MNĚ (BENTO ROZVRŽENÍ) -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-number">02 // PROFIL</span>
+          <h2 class="section-heading">O mně & Co mě baví</h2>
+          <p class="section-subheading">Zájmy, technická vášeň a rovnováha mezi studiem a volným časem.</p>
+        </div>
+
+        <div class="about-bento-grid">
+          <!-- Příběh -->
+          <div class="bento-card about-story-card">
+            <div class="bento-card-top">
+              <span class="tech-icon-tag">⚡ HISTORIE & ZÁJEM</span>
+            </div>
+            <h3>Můj příběh</h3>
+            <p>
+              Už od malička mě fascinovalo zkoumat, co se skrývá pod krytem přístrojů a jak fungují složité mechanismy. Volba oboru <strong>Elektrotechnika</strong> na SPŠ Hradební pro mě byla přirozeným krokem.
+            </p>
+            <p>
+              Ve škole mě baví laboratorní cvičení, zapojování obvodů a práce s měřicí technikou. Neustále hledám cesty, jak propojit svět hardwaru, mikropočítačů a moderního softwaru.
+            </p>
+          </div>
+
+          <!-- Koníčky jako moduly -->
+          <div class="bento-card about-hobbies-card">
+            <div class="bento-card-top">
+              <span class="tech-icon-tag">🔧 VOLNÝ ČAS & AKTIVITY</span>
+            </div>
+            <h3>Koníčky a zájmy</h3>
+
+            <div class="hobby-modules-grid">
+              <div class="hobby-module">
+                <div class="hobby-ico">⚡</div>
+                <div class="hobby-info">
+                  <strong>Elektro bastlení & Obvody</strong>
+                  <span>Zapojování, pájení a zkoušení nových součástek</span>
+                </div>
+              </div>
+
+              <div class="hobby-module">
+                <div class="hobby-ico">💻</div>
+                <div class="hobby-info">
+                  <strong>IT & Webové technologie</strong>
+                  <span>Kódování, tvorba webu a digitální nástroje</span>
+                </div>
+              </div>
+
+              <div class="hobby-module">
+                <div class="hobby-ico">🎮</div>
+                <div class="hobby-info">
+                  <strong>Gaming & Strategie</strong>
+                  <span>Rozvoj reflexů, rychlého rozhodování a logiky</span>
+                </div>
+              </div>
+
+              <div class="hobby-module">
+                <div class="hobby-ico">🏃</div>
+                <div class="hobby-info">
+                  <strong>Sport & Kondice</strong>
+                  <span>Pohyb a cvičení pro vyčištění hlavy a zdravou energii</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. DOVEDNOSTI (HARDWARE & SOFTWARE) -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-number">03 // KOMPETENCE</span>
+          <h2 class="section-heading">Moje dovednosti</h2>
+          <p class="section-subheading">Elektrotechnické znalosti, práce s měřicími přístroji i softwarem.</p>
+        </div>
+
+        <div class="skills-bento-grid">
+          
+          <!-- Karta: Elektrotechnika -->
+          <div class="bento-card skill-card-main">
+            <div class="card-chip-badge">ELEKTRO & HARDWARE</div>
+            <h3>Elektrotechnika a měření</h3>
+            <p class="skill-intro">Znalosti získané ve výuce a odborné praxi na SPŠ Hradební.</p>
+
+            <div class="tech-meter-list">
+              <div class="tech-meter">
+                <div class="meter-header">
+                  <span>Čtení schémat & sestavování obvodů</span>
+                  <span class="meter-val">85%</span>
+                </div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 85%;"></div></div>
+              </div>
+
+              <div class="tech-meter">
+                <div class="meter-header">
+                  <span>Měření elektrických veličin (U, I, R)</span>
+                  <span class="meter-val">80%</span>
+                </div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 80%;"></div></div>
+              </div>
+
+              <div class="tech-meter">
+                <div class="meter-header">
+                  <span>Pájení & práce se součástkami</span>
+                  <span class="meter-val">75%</span>
+                </div>
+                <div class="meter-bar"><div class="meter-fill" style="width: 75%;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Karta: Software a IT -->
+          <div class="bento-card skill-card-secondary">
+            <div class="card-chip-badge">SOFTWARE & IT</div>
+            <h3>Nástroje & Vývoj</h3>
+            
+            <div class="tags-cloud">
+              <span class="bento-tag">Multimetr & Přístroje</span>
+              <span class="bento-tag">Simulace obvodů</span>
+              <span class="bento-tag">HTML5 & CSS3</span>
+              <span class="bento-tag">VS Code</span>
+              <span class="bento-tag">Git & GitHub</span>
+              <span class="bento-tag">MS Office (Protokoly)</span>
+            </div>
+
+            <div class="soft-traits-box">
+              <div class="trait-item">✓ Technické & logické myšlení</div>
+              <div class="trait-item">✓ Důraz na bezpečnost elektro</div>
+              <div class="trait-item">✓ Pečlivost při měření a dokumentaci</div>
+            </div>
+          </div>
+
+          <!-- Karta: Jazyky -->
+          <div class="bento-card skill-card-lang">
+            <div class="card-chip-badge">KOMUNIKACE</div>
+            <h3>Jazyková vybavenost</h3>
+
+            <div class="lang-pills">
+              <div class="lang-pill">
+                <span class="lang-title">Čeština</span>
+                <span class="lang-badge">Rodilý mluvčí</span>
+              </div>
+              <div class="lang-pill">
+                <span class="lang-title">Angličtina</span>
+                <span class="lang-badge">B1/B2 – Technická terminologie</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. MOJE PROJEKTY A ÚSPĚCHY -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-number">04 // PORTFOLIO</span>
+          <h2 class="section-heading">Projekty a úspěchy</h2>
+          <p class="section-subheading">Ukázka prací ze školní výuky i vlastního technologického rozvoje.</p>
+        </div>
+
+        <div class="projects-showcase-grid">
+          
+          <!-- Projekt 1: Školní elektrotechnika -->
+          <div class="bento-card project-bento-card">
+            <div class="project-header-row">
+              <span class="project-chip school-chip">Školní projekt // SPŠ Hradební</span>
+              <span class="project-year">2026</span>
+            </div>
+
+            <div class="project-visual-banner electro-banner">
+              <div class="circuit-diagram-mockup">
+                <span class="diagram-line"></span>
+                <span class="diagram-resistor">--[ R1 ]--</span>
+                <span class="diagram-line"></span>
+                <span class="diagram-node">⚡ Vcc</span>
+              </div>
+            </div>
+
+            <h3>Praktické zapojení a měření elektrických obvodů</h3>
+            <p class="project-summary">
+              Komplexní školní práce zaměřená na sestavení reálného obvodu dle schématu, ověření Ohmova zákona a Kirchhoffových zákonů, přesné měření napětí a proudů a vyhodnocení odchylek v technickém protokolu.
+            </p>
+
+            <div class="project-stack">
+              <span>Měření veličin</span>
+              <span>Schémata</span>
+              <span>Protokol</span>
+              <span>Bezpečnost</span>
+            </div>
+
+            <div class="project-footer-btn">
+              <a href="#" class="btn btn-sm btn-ghost" onclick="event.preventDefault(); alert('Zde můžeš doplnit fotky nebo technický protokol svého projektu!');">
+                Zobrazit podrobnosti →
+              </a>
+            </div>
+          </div>
+
+          <!-- Projekt 2: Osobní technologický web -->
+          <div class="bento-card project-bento-card">
+            <div class="project-header-row">
+              <span class="project-chip code-chip">Osobní tvorba // Vývoj</span>
+              <span class="project-year">2026</span>
+            </div>
+
+            <div class="project-visual-banner code-banner">
+              <div class="code-editor-mockup">
+                <span class="code-line"><span class="c-purple">const</span> <span class="c-cyan">student</span> = { name: <span class="c-green">'Vilém'</span> };</span>
+                <span class="code-line"><span class="c-purple">const</span> <span class="c-cyan">field</span> = <span class="c-green">'Elektrotechnika'</span>;</span>
+              </div>
+            </div>
+
+            <h3>Responzivní osobní portfolio s vizualizací</h3>
+            <p class="project-summary">
+              Interaktivní webové portfolio postavené na moderním designu, podpoře tmavého/světlého režimu, animovaném plátně a optimalizovaném pro mobilní telefony i stolní počítače.
+            </p>
+
+            <div class="project-stack">
+              <span>HTML5</span>
+              <span>Modern CSS</span>
+              <span>JavaScript</span>
+              <span>Canvas</span>
+            </div>
+
+            <div class="project-footer-btn">
+              <a href="#hero" class="btn btn-sm btn-ghost">
+                Zpět na začátek webu ↑
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. MOJE BUDOUCNOST (ROADMAPA NA VYSOKOU ŠKOLU) -->
+    <section class="section" id="future">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-number">05 // CÍLE & VIZE</span>
+          <h2 class="section-heading">Moje budoucnost: Cesta na VŠ</h2>
+          <p class="section-subheading">Konkrétní plán dalšího vzdělávání a kariérní směřování v oboru.</p>
+        </div>
+
+        <div class="roadmap-grid">
+          
+          <div class="roadmap-card">
+            <div class="roadmap-step-badge">FÁZE 01</div>
+            <h4>Úspěšná maturita na SPŠ Hradební</h4>
+            <p>
+              Zvládnutí všech odborných i všeobecných předmětů, úspěšné složení praktické maturitní zkoušky a obhájení ročníkového projektu. Získání silného teoretického základu a elektrotechnické kvalifikace.
+            </p>
+            <div class="roadmap-status-dot completed">Současný milník</div>
+          </div>
+
+          <div class="roadmap-card active-target">
+            <div class="roadmap-step-badge highlight-step">FÁZE 02 // HLAVNÍ CÍL</div>
+            <h4>Studium na technické vysoké škole</h4>
+            <p>
+              <strong>Mám v plánu pokračovat ve studiu na technické univerzitě</strong> se zaměřením na elektrotechniku, automatizaci, robotiku či kybernetiku. Cílem je získat inženýrský titul (Ing.), prohloubit specializaci a pracovat ve špičkových laboratořích.
+            </p>
+            <div class="roadmap-status-dot target">Prioritní cíl po maturitě</div>
+          </div>
+
+          <div class="roadmap-card">
+            <div class="roadmap-step-badge">FÁZE 03</div>
+            <h4>Kariéra inženýra & Technologický vývoj</h4>
+            <p>
+              Uplatnění v moderní elektrotechnické firmě, průmyslové automatizaci nebo ve výzkumu a vývoji inovativních technologií s reálným dopadem na společnost.
+            </p>
+            <div class="roadmap-status-dot future-dot">Dlouhodobá vize</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. KONTAKT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-number">06 // KOMUNIKACE</span>
+          <h2 class="section-heading">Spojme se</h2>
+          <p class="section-subheading">Neváhej mi napsat zprávu nebo se podívat na mé profily.</p>
+        </div>
+
+        <div class="contact-bento-grid">
+          
+          <!-- Přímé kontaktní informace -->
+          <div class="bento-card contact-details-card">
+            <h3>Kontaktní informace</h3>
+            <p class="contact-note">Jsem otevřen diskuzi o elektrotechnice, projektech i možnostech spolupráce.</p>
+
+            <div class="contact-items-list">
+              <div class="contact-line">
+                <span class="c-label">E-mail:</span>
+                <div class="c-val-row">
+                  <a href="mailto:vilem@example.com" id="user-email-text" class="c-link">vilem@example.com</a>
+                  <button id="copy-email-btn" class="mini-copy-btn" title="Kopírovat e-mail">
+                    <span id="copy-tooltip">Kopírovat</span>
+                    📋
+                  </button>
+                </div>
+              </div>
+
+              <div class="contact-line">
+                <span class="c-label">Lokalita:</span>
+                <span class="c-val">Hradec Králové, Česká republika</span>
+              </div>
+
+              <div class="contact-line">
+                <span class="c-label">Škola:</span>
+                <span class="c-val">SPŠ, SOŠ a SOU Hradební</span>
+              </div>
+
+              <div class="contact-line">
+                <span class="c-label">GitHub:</span>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="c-link">github.com/vilem</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rychlý formulář -->
+          <div class="bento-card contact-form-card">
+            <h3>Zanechat zprávu</h3>
+            <form id="contact-form" class="clean-form">
+              <div class="form-input-group">
+                <label for="form-name">Vaše jméno</label>
+                <input type="text" id="form-name" required placeholder="Jan Novák">
+              </div>
+
+              <div class="form-input-group">
+                <label for="form-email">Váš e-mail</label>
+                <input type="email" id="form-email" required placeholder="jan.novak@email.cz">
+              </div>
+
+              <div class="form-input-group">
+                <label for="form-message">Zpráva</label>
+                <textarea id="form-message" rows="3" required placeholder="Dobrý den, rád bych se zeptal na..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-glow btn-block">
+                Odeslat zprávu →
+              </button>
+              <div id="form-status" class="form-status-msg"></div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Zápatí -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <span class="terminal-prompt">&gt;</span>
+        <span>© <span id="current-year">2026</span> Vilém // SPŠ Hradební Elektrotechnika</span>
+      </div>
+      <a href="#hero" class="footer-top-btn">Návrat nahoru ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
