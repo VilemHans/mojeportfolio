@@ -142,7 +142,33 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ============================================================
-  // 5. KOPÍROVÁNÍ E-MAILU
+  // 5. INTERAKTIVNÍ FILTROVÁNÍ PROJEKTŮ
+  // ============================================================
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-bento-card');
+
+  if (filterBtns.length > 0 && projectCards.length > 0) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filterVal = btn.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filterVal === 'all' || category === filterVal) {
+            card.classList.remove('is-hidden');
+          } else {
+            card.classList.add('is-hidden');
+          }
+        });
+      });
+    });
+  }
+
+  // ============================================================
+  // 6. KOPÍROVÁNÍ E-MAILU
   // ============================================================
   const copyBtn = document.getElementById('copy-email-btn');
   const emailLink = document.getElementById('user-email-text');

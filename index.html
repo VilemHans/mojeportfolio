@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Pokyn pro neindexování ve vyhledávačích (noindex, nofollow) -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <!-- Bezpečnostní meta prvky -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Vilém // Portfolio & Elektrotechnika</title>
   <meta name="description" content="Osobní technologické portfolio studenta oboru elektrotechnika na SPŠ, SOŠ a SOU Hradební.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -295,10 +301,17 @@
           <p class="section-subheading">Ukázka prací ze školní výuky i vlastního technologického rozvoje.</p>
         </div>
 
-        <div class="projects-showcase-grid">
+        <!-- Interaktivní filtrování projektů -->
+        <div class="project-filters" id="project-filters">
+          <button class="filter-btn active" data-filter="all">Všechny projekty</button>
+          <button class="filter-btn" data-filter="electro">⚡ Elektrotechnika</button>
+          <button class="filter-btn" data-filter="software">💻 Software & IT</button>
+        </div>
+
+        <div class="projects-showcase-grid" id="projects-grid">
           
           <!-- Projekt 1: Školní elektrotechnika -->
-          <div class="bento-card project-bento-card">
+          <div class="bento-card project-bento-card" data-category="electro">
             <div class="project-header-row">
               <span class="project-chip school-chip">Školní projekt // SPŠ Hradební</span>
               <span class="project-year">2026</span>
@@ -333,7 +346,7 @@
           </div>
 
           <!-- Projekt 2: Osobní technologický web -->
-          <div class="bento-card project-bento-card">
+          <div class="bento-card project-bento-card" data-category="software">
             <div class="project-header-row">
               <span class="project-chip code-chip">Osobní tvorba // Vývoj</span>
               <span class="project-year">2026</span>
@@ -361,6 +374,41 @@
             <div class="project-footer-btn">
               <a href="#hero" class="btn btn-sm btn-ghost">
                 Zpět na začátek webu ↑
+              </a>
+            </div>
+          </div>
+
+          <!-- Projekt 3: Simulace usměrňovacího obvodu -->
+          <div class="bento-card project-bento-card" data-category="electro">
+            <div class="project-header-row">
+              <span class="project-chip school-chip">Školní cvičení // Simulace</span>
+              <span class="project-year">2026</span>
+            </div>
+
+            <div class="project-visual-banner electro-banner">
+              <div class="circuit-diagram-mockup">
+                <span class="diagram-line"></span>
+                <span class="diagram-resistor">--| C1 |--</span>
+                <span class="diagram-line"></span>
+                <span class="diagram-node">⚡ GND</span>
+              </div>
+            </div>
+
+            <h3>Návrh a simulace filtračního obvodu</h3>
+            <p class="project-summary">
+              Návrh diodového usměrňovače a filtračního obvodu v simulačním programu. Analýza zvlnění napětí a výpočet optimální kapacity vyhlazovacího kondenzátoru.
+            </p>
+
+            <div class="project-stack">
+              <span>Simulace obvodů</span>
+              <span>Usměrňovače</span>
+              <span>Kondenzátory</span>
+              <span>Měření</span>
+            </div>
+
+            <div class="project-footer-btn">
+              <a href="#" class="btn btn-sm btn-ghost" onclick="event.preventDefault(); alert('Schéma a výpočetní model obvodu.');">
+                Zobrazit podrobnosti →
               </a>
             </div>
           </div>
@@ -462,17 +510,17 @@
             <form id="contact-form" class="clean-form">
               <div class="form-input-group">
                 <label for="form-name">Vaše jméno</label>
-                <input type="text" id="form-name" required placeholder="Jan Novák">
+                <input type="text" id="form-name" required maxlength="80" autocomplete="name" placeholder="Jan Novák">
               </div>
 
               <div class="form-input-group">
                 <label for="form-email">Váš e-mail</label>
-                <input type="email" id="form-email" required placeholder="jan.novak@email.cz">
+                <input type="email" id="form-email" required maxlength="100" autocomplete="email" placeholder="jan.novak@email.cz">
               </div>
 
               <div class="form-input-group">
                 <label for="form-message">Zpráva</label>
-                <textarea id="form-message" rows="3" required placeholder="Dobrý den, rád bych se zeptal na..."></textarea>
+                <textarea id="form-message" rows="3" required maxlength="1200" placeholder="Dobrý den, rád bych se zeptal na..."></textarea>
               </div>
 
               <button type="submit" class="btn btn-glow btn-block">

@@ -1,0 +1,4 @@
+# Pokyn pro neindexování ve vyhledávačích
+User-agent: *
+Disallow: /
+
