@@ -168,61 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================================
-  // 6. KOPÍROVÁNÍ E-MAILU
-  // ============================================================
-  const copyBtn = document.getElementById('copy-email-btn');
-  const emailLink = document.getElementById('user-email-text');
-  const copyTooltip = document.getElementById('copy-tooltip');
-
-  if (copyBtn && emailLink) {
-    copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText(emailLink.textContent.trim()).then(() => {
-        copyBtn.classList.add('copied');
-        if (copyTooltip) copyTooltip.textContent = 'Zkopírováno!';
-        setTimeout(() => {
-          copyBtn.classList.remove('copied');
-          if (copyTooltip) copyTooltip.textContent = 'Kopírovat';
-        }, 2000);
-      });
-    });
-  }
-
-  // ============================================================
-  // 6. KONTAKTNÍ FORMULÁŘ
-  // ============================================================
-  const contactForm = document.getElementById('contact-form');
-  const formStatus = document.getElementById('form-status');
-
-  if (contactForm && formStatus) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('form-name').value.trim();
-      const email = document.getElementById('form-email').value.trim();
-      const msg = document.getElementById('form-message').value.trim();
-
-      if (!name || !email || !msg) {
-        formStatus.textContent = '! Vyplňte prosím všechna pole.';
-        formStatus.className = 'form-status-msg error';
-        return;
-      }
-
-      formStatus.textContent = 'Odesílám zprávu...';
-      formStatus.className = 'form-status-msg';
-
-      setTimeout(() => {
-        formStatus.textContent = `✓ Děkuji, ${name}! Zpráva byla úspěšně odeslána.`;
-        formStatus.className = 'form-status-msg success';
-        contactForm.reset();
-
-        setTimeout(() => {
-          formStatus.textContent = '';
-        }, 4000);
-      }, 600);
-    });
-  }
-
-  // ============================================================
-  // 7. AKTUÁLNÍ ROK V PATIČCE
+  // 6. AKTUÁLNÍ ROK V PATIČCE
   // ============================================================
   const yearEl = document.getElementById('current-year');
   if (yearEl) {
