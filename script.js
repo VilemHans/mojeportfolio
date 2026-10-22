@@ -181,8 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const backToTopBtn = document.getElementById('back-to-top');
   if (backToTopBtn) {
     const handleScroll = () => {
+      const scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
       // Zobrazí se až po sjetí dolů (více než 300px)
-      if (window.scrollY > 300) {
+      if (scrollPos > 300) {
         backToTopBtn.classList.add('visible');
       } else {
         backToTopBtn.classList.remove('visible');
