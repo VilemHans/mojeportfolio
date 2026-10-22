@@ -1338,6 +1338,73 @@ button {
 }
 
 /* ============================================================
+   TLAČÍTKO NÁVRAT NAHORU (BACK TO TOP)
+   ============================================================ */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  color: var(--cyan-electric);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  z-index: 990;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(16px);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.2s ease,
+              border-color 0.2s ease,
+              color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.back-to-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top-btn:hover {
+  background: var(--cyan-electric);
+  color: #07090e;
+  border-color: var(--cyan-electric);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 24px var(--cyan-glow);
+}
+
+[data-theme="light"] .back-to-top-btn:hover {
+  color: #ffffff;
+}
+
+.back-to-top-btn:active {
+  transform: translateY(-1px);
+}
+
+.back-to-top-btn:focus-visible {
+  outline: 2px solid var(--cyan-electric);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top-btn {
+    transition: none;
+  }
+}
+
+/* ============================================================
    RESPONZIVITA
    ============================================================ */
 @media (max-width: 992px) {
@@ -1440,5 +1507,12 @@ button {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
+  }
+
+  .back-to-top-btn {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 42px;
+    height: 42px;
   }
 }

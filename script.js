@@ -174,4 +174,30 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+
+  // ============================================================
+  // 7. TLAČÍTKO PRO OKAMŽITÝ NÁVRAT NAHORU (BACK TO TOP)
+  // ============================================================
+  const backToTopBtn = document.getElementById('back-to-top');
+  if (backToTopBtn) {
+    const handleScroll = () => {
+      // Zobrazí se až po sjetí dolů (více než 300px)
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    backToTopBtn.addEventListener('click', () => {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({
+        top: 0,
+        behavior: prefersReducedMotion ? 'auto' : 'smooth'
+      });
+    });
+  }
 });
